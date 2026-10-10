@@ -44,11 +44,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({
         <div className="absolute inset-0 z-0 bg-slate-950/60" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-amber-300 text-xs font-semibold">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Page 02 · Store Charter & Mission</span>
-          </div>
-
           <h1 className="text-3xl sm:text-5xl font-black font-brand tracking-tight">
             What VERFIED Is About
           </h1>
@@ -67,7 +62,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             <span className="text-slate-600">·</span>
             <button
               onClick={() => onNavigateToShop('all')}
-              className="px-4 py-2 bg-amber-400 text-slate-950 font-bold text-xs rounded-xl hover:bg-amber-300 transition-colors cursor-pointer"
+              className="px-5 py-2.5 bg-gradient-to-b from-white via-slate-100 to-slate-300 hover:from-white hover:via-slate-50 hover:to-slate-200 text-slate-950 font-extrabold text-xs rounded-xl transition-all shadow-[0_4px_16px_rgba(255,255,255,0.4),0_2px_4px_rgba(0,0,0,0.15),inset_0_1px_2px_rgba(255,255,255,0.9),inset_0_-1px_1px_rgba(0,0,0,0.2)] border border-white/80 active:scale-[0.98] cursor-pointer"
             >
               Proceed to Shopping Catalog →
             </button>
@@ -341,15 +336,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
       {/* Section 3: Dedicated Support Hotline 059 883 0932 */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center space-y-6">
-        <div className="w-16 h-16 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center mx-auto shadow-lg">
-          <Phone className="w-8 h-8" />
+        {/* Silver Glossy Phone SVG Icon Container */}
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-b from-white via-slate-200 to-slate-400 text-slate-950 flex items-center justify-center mx-auto shadow-[0_8px_24px_rgba(0,0,0,0.12),inset_0_2px_3px_rgba(255,255,255,0.95),inset_0_-2px_4px_rgba(0,0,0,0.25)] border border-white/80 ring-1 ring-slate-300/60 transition-transform hover:scale-105">
+          <Phone className="w-8 h-8 text-slate-900 drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]" />
         </div>
 
         <div>
-          <span className="text-xs font-bold text-amber-700 uppercase tracking-widest">
+          <span className="inline-block px-3 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold uppercase tracking-widest">
             Always Here For You
           </span>
-          <h3 className="text-2xl sm:text-3xl font-extrabold font-brand text-slate-950 mt-1">
+          <h3 className="text-2xl sm:text-3xl font-extrabold font-brand text-slate-950 mt-2">
             Having Any Problem? Contact 059 883 0932
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto mt-2 leading-relaxed">
@@ -360,9 +356,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <a
             href={SUPPORT_PHONE_CALL}
-            className="px-6 py-3 rounded-xl bg-slate-950 text-white font-bold text-xs hover:bg-slate-900 transition-colors flex items-center gap-2"
+            className="px-6 py-3 rounded-xl bg-slate-950 text-white font-bold text-xs hover:bg-slate-900 transition-colors flex items-center gap-2 shadow-sm"
           >
-            <Phone className="w-4 h-4 text-amber-400" />
+            <div className="w-4 h-4 rounded bg-gradient-to-b from-white to-slate-300 flex items-center justify-center shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)]">
+              <Phone className="w-2.5 h-2.5 text-slate-950" />
+            </div>
             <span>Call Hotline: {SUPPORT_PHONE}</span>
           </a>
 
@@ -396,9 +394,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({
           {!currentUser && (
             <button
               onClick={() => onOpenAuth('register')}
-              className="px-8 py-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-sm rounded-xl transition-all shadow-lg flex items-center gap-2 cursor-pointer"
+              className="px-8 py-4 bg-gradient-to-b from-white via-slate-100 to-slate-300 hover:from-white hover:via-slate-50 hover:to-slate-200 text-slate-950 font-extrabold text-sm rounded-xl transition-all shadow-[0_8px_25px_rgba(255,255,255,0.35),0_2px_4px_rgba(0,0,0,0.15),inset_0_1px_2px_rgba(255,255,255,0.9),inset_0_-1px_1px_rgba(0,0,0,0.2)] border border-white/80 ring-1 ring-slate-300/60 flex items-center gap-2 cursor-pointer active:scale-95"
             >
-              <UserPlus className="w-4 h-4" />
+              <UserPlus className="w-4 h-4 text-slate-950" />
               <span>Register First (Required)</span>
             </button>
           )}

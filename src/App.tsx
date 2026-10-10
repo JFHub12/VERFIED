@@ -10,6 +10,7 @@ import { AuthModal } from './components/AuthModal';
 import { SupportModal } from './components/SupportModal';
 import { ShareDeviceModal } from './components/ShareDeviceModal';
 import { AdminDashboard } from './components/AdminDashboard';
+import { AdminPasswordModal } from './components/AdminPasswordModal';
 import { Footer } from './components/Footer';
 import { OfflineIndicator } from './components/OfflineIndicator';
 import { PRODUCTS, CATEGORIES, Product } from './data/products';
@@ -56,7 +57,8 @@ export default function App() {
   const [isSupportOpen, setIsSupportOpen] = useState(false);
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
-  const [isAdminEnabled, setIsAdminEnabled] = useState(false);
+  const [isAdminPasswordModalOpen, setIsAdminPasswordModalOpen] = useState(false);
+  const [isAdminEnabled, setIsAdminEnabled] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   useEffect(() => {
@@ -670,6 +672,16 @@ export default function App() {
         </div>
       )}
       
+      {/* Admin Passkey Protection Gate */}
+      <AdminPasswordModal
+        isOpen={isAdminPasswordModalOpen}
+        onClose={() => setIsAdminPasswordModalOpen(false)}
+        onSuccess={() => {
+          setIsAdminPasswordModalOpen(false);
+          setIsAdminOpen(true);
+        }}
+      />
+
       {/* Admin Dashboard */}
       <AdminDashboard
         isOpen={isAdminOpen}
@@ -697,10 +709,12 @@ export default function App() {
       {/* Admin Button trigger */}
       {isAdminEnabled && (
         <button 
-          onClick={() => setIsAdminOpen(true)}
-          className="fixed bottom-20 left-6 z-50 bg-gradient-to-r from-slate-200 via-slate-100 to-slate-300 text-slate-950 font-bold text-xs px-4 py-3 rounded-2xl shadow-2xl border border-slate-300 hover:from-slate-100 hover:to-slate-200 transition-all cursor-pointer"
+          onClick={() => setIsAdminPasswordModalOpen(true)}
+          className="fixed bottom-20 left-6 z-50 bg-gradient-to-b from-white via-slate-100 to-slate-300 hover:from-white hover:via-slate-50 hover:to-slate-200 text-slate-950 font-extrabold text-xs px-4 py-3 rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.25),0_2px_4px_rgba(0,0,0,0.1),inset_0_1px_2px_rgba(255,255,255,0.9),inset_0_-1px_1px_rgba(0,0,0,0.2)] border border-white/80 transition-all cursor-pointer active:scale-95 flex items-center gap-2"
+          title="Merchant Admin Access (Protected by VITE_ADMIN_PASSWORD)"
         >
-          Admin Console
+          <Lock className="w-3.5 h-3.5 text-slate-900" />
+          <span>Admin Console</span>
         </button>
       )}
     </div>
